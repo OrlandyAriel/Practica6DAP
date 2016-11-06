@@ -2,6 +2,8 @@ package ull.patrones.form;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,6 +37,9 @@ public class DChat extends JDialog
 		m_mensajes = new JTextArea();
 		m_mensajes.setVisible(true);
 		m_mensajes.setEditable(false);
+		m_mensajes.setBackground(SystemColor.desktop);
+		m_mensajes.setForeground(SystemColor.text);
+		m_mensajes.setFont(new Font("Consolas", Font.PLAIN, 12));
 		this.add(m_mensajes,BorderLayout.CENTER);
 		panelBajo();
 	}
@@ -66,10 +71,7 @@ public class DChat extends JDialog
 	}
 	public void verMensajes(String a_mensaje)
 	{
-		System.err.println(a_mensaje);
-		
 		m_mensajes.setText(a_mensaje);
-		
 	}
 	
 }
