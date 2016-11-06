@@ -5,18 +5,15 @@ import ull.patrones.singleton.Mediador;
 public class Usuario
 {
 	private String m_nombre;
-	
+	private Mediador m_medi;
 	public Usuario(String a_nombre)
 	{
 		m_nombre = a_nombre;
+		m_medi = Mediador.getInstancia();
 	}
 	public void enviarMensaje(String a_mensaje, Usuario a_usuario)
 	{
-		Mediador.enviar(a_mensaje,a_usuario);
-	}
-	public void recibir(String a_mensaje, Usuario de_usuario)
-	{
-		System.out.println(de_usuario.getM_nombre()+" dice:"+a_mensaje);
+		m_medi.enviar(a_mensaje,a_usuario.getM_nombre());
 	}
 	public String getM_nombre()
 	{
