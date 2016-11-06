@@ -12,7 +12,7 @@ public class Mediador implements IMediador
 	public Mediador(String a_nombreSala)
 	{
 		m_nombreSala = a_nombreSala;
-		m_mensajesSala = "--Bienvenido a la sala de chat "+m_nombreSala+"--";
+		m_mensajesSala = "--Bienvenido a la sala de chat  "+m_nombreSala+"--";
 		m_listaClientes = new LinkedList<>();
 	}
 	

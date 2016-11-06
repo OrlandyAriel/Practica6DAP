@@ -4,24 +4,27 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import ull.patrones.mediador.ICliente;
 
 public class DChat extends JDialog
 {
-	private ICliente m_cliente;
-	private JTextArea m_mensajes;
-	private JTextField m_jt_mensaje;
+
+	private final JPanel m_panelArriba = new JPanel();
+	private JTextField m_txtEnviar;
 	private JButton m_btnEnviar;
+	private ICliente m_cliente;
 	private JPanel m_panelBajo;
+	private TextArea m_txtMensajesChat;
+
 	public DChat(ICliente a_cliente)
 	{
 		m_cliente = a_cliente;
@@ -30,55 +33,61 @@ public class DChat extends JDialog
 
 	private void initComponent()
 	{
-		setLayout(new FlowLayout());
+
 		setTitle(m_cliente.getNombre());
-		setSize(400,400);
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(new BorderLayout());
+		setResizable(false);
+		
+		initPanelArriba();
+		initPanelBajo();
+		getContentPane().add(m_panelBajo, BorderLayout.SOUTH);
+		getContentPane().add(m_panelArriba, BorderLayout.CENTER);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		initArea();
-		panelBajo();
-		this.add(m_mensajes);
-		this.add(m_panelBajo);
 	}
-	private void initArea()
+	private void initPanelArriba()
 	{
-		m_mensajes = new JTextArea();
-		m_mensajes.setEditable(false);
-		m_mensajes.setBackground(SystemColor.desktop);
-		m_mensajes.setForeground(SystemColor.text);
-		m_mensajes.setFont(new Font("Consolas", Font.PLAIN, 12));
-		
-		m_mensajes.setVisible(true);
-		panelBajo();
-		
+		m_panelArriba.setLayout(new FlowLayout());
+		m_panelArriba.setBorder(new EmptyBorder(5, 5, 5, 5));
+		m_txtMensajesChat = new TextArea();
+
+		m_txtMensajesChat.setBackground(SystemColor.desktop);
+		m_txtMensajesChat.setForeground(SystemColor.text);
+		m_txtMensajesChat.setFont(new Font("Consolas", Font.PLAIN, 12));
+		m_txtMensajesChat.setEditable(false);
+		m_panelArriba.add(m_txtMensajesChat);
 	}
-	private void panelBajo()
+	private void initPanelBajo()
 	{
 		m_panelBajo = new JPanel();
 		m_panelBajo.setLayout(new FlowLayout());
-		m_jt_mensaje = new JTextField();
-		m_jt_mensaje.setVisible(true);
-		m_jt_mensaje.setColumns(20);
+		
+		m_txtEnviar = new JTextField();
+		m_txtEnviar.setColumns(31);
+
 		m_btnEnviar = new JButton("Enviar");
-		m_btnEnviar.setVisible(true);
-		m_btnEnviar.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent arg0)
+		m_btnEnviar.addActionListener(
+			new ActionListener()
 			{
-				btnActionPerformed();
+				public void actionPerformed(ActionEvent arg0)
+				{
+					btnEnviarActionPerformed();
+				}
 			}
-		});
-		m_panelBajo.add(m_jt_mensaje);
+		);
+		m_panelBajo.add(m_txtEnviar);
 		m_panelBajo.add(m_btnEnviar);
+		
 	}
-	private void btnActionPerformed()
+	private void btnEnviarActionPerformed()
 	{
-		m_cliente.enviarMensaje(m_jt_mensaje.getText());
-		m_jt_mensaje.setText("");
+		m_cliente.enviarMensaje(m_txtEnviar.getText());
+		m_txtEnviar.setText("");
 	}
-	public void verMensajes(String a_mensaje)
+
+	public void verMensajes(String a_mensajes)
 	{
-		m_mensajes.setText(a_mensaje);
+		m_txtMensajesChat.setText(a_mensajes);
 	}
-	
 }

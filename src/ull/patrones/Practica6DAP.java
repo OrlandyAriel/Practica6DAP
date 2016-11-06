@@ -9,8 +9,8 @@ public class Practica6DAP
 	public static void main(String[] args)
 	{
 		Mediador t_med = new Mediador("Patrones");
-		Usuario landy= new Usuario("landy",t_med);
-		Usuario ariel = new Usuario("Ariel",t_med);
+		new Usuario("Landy",t_med);
+		new Usuario("Ariel",t_med);
+		new Usuario("Ana", t_med);
 	}
-
 }
