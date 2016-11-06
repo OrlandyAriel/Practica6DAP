@@ -11,8 +11,6 @@ public class Practica6DAP
 		Mediador t_med = new Mediador("Patrones");
 		Usuario landy= new Usuario("landy",t_med);
 		Usuario ariel = new Usuario("Ariel",t_med);
-		t_med.registarUsuario(landy);
-		t_med.registarUsuario(ariel);
 	}
 
 }

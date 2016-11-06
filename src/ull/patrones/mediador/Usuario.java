@@ -12,6 +12,7 @@ public class Usuario implements ICliente
 	{
 		m_nombre = a_nombre;
 		m_mediador = a_mediador;
+		m_mediador.registarUsuario(this);
 		m_display = new DChat(this);
 	}
 	@Override
@@ -31,7 +32,10 @@ public class Usuario implements ICliente
 	}
 	public void display(String a_mensajes)
 	{
+		System.out.println("aui");
+		
 		m_display.verMensajes(a_mensajes);
+		
 	}
 	@Override
 	public String toString()
