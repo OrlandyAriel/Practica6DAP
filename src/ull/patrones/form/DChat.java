@@ -14,26 +14,33 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import ull.patrones.mediador.ICliente;
-
+/**
+ * Clase que representa la ventana de cada usuario, donde este puede interactuar en la sala
+ * @author Orlandy Ariel Sánchez A.
+ *
+ */
 public class DChat extends JDialog
-{
-
+{//Atributos
 	private final JPanel m_panelArriba = new JPanel();
 	private JTextField m_txtEnviar;
 	private JButton m_btnEnviar;
 	private ICliente m_cliente;
 	private JPanel m_panelBajo;
 	private TextArea m_txtMensajesChat;
-
+	/**
+	 *Construstor que recibe un cliente/usuario para crear una ventana para este.
+	 * @param a_cliente, usuario para el cual se crea la ventana
+	 */
 	public DChat(ICliente a_cliente)
 	{
 		m_cliente = a_cliente;
 		initComponent();
 	}
-
+	/**
+	 * Método para iniizalizar los distintos componentes de la ventana
+	 */
 	private void initComponent()
 	{
-
 		setTitle(m_cliente.getNombre());
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -46,6 +53,9 @@ public class DChat extends JDialog
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
+	/**
+	 * Método que permite inicizliar el componente donde se visualiazarnan los mensajes.
+	 */
 	private void initPanelArriba()
 	{
 		m_panelArriba.setLayout(new FlowLayout());
@@ -58,6 +68,10 @@ public class DChat extends JDialog
 		m_txtMensajesChat.setEditable(false);
 		m_panelArriba.add(m_txtMensajesChat);
 	}
+	/**
+	 * Método que permitne inicializar los componentes con los que el usuario
+	 * interactuará con la sala
+	 */
 	private void initPanelBajo()
 	{
 		m_panelBajo = new JPanel();
@@ -80,13 +94,19 @@ public class DChat extends JDialog
 		m_panelBajo.add(m_btnEnviar);
 		
 	}
+	/**
+	 * Método para realizar una accion cuando se hace click en el botón enviar
+	 */
 	private void btnEnviarActionPerformed()
 	{
 		m_cliente.enviarMensaje(m_txtEnviar.getText());
 		m_txtEnviar.setText("");
 	}
-
-	public void verMensajes(String a_mensajes)
+	/**
+	 * Actualiza los mensajes de la sala
+	 * @param a_mensajes
+	 */
+	public void actualizaDisplay(String a_mensajes)
 	{
 		m_txtMensajesChat.setText(a_mensajes);
 	}
