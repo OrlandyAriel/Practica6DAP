@@ -1,6 +1,4 @@
-package ull.patrones.singleton;
-
-import ull.patrones.mediador.ICliente;
+package ull.patrones.mediador;
 
 public interface IMediador
 {

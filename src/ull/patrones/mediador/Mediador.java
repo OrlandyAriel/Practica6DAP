@@ -1,8 +1,6 @@
-package ull.patrones.singleton;
+package ull.patrones.mediador;
 
 import java.util.LinkedList;
-
-import ull.patrones.mediador.ICliente;
 
 public class Mediador implements IMediador
 {

@@ -1,7 +1,7 @@
 package ull.patrones;
 
+import ull.patrones.mediador.Mediador;
 import ull.patrones.mediador.Usuario;
-import ull.patrones.singleton.Mediador;
 
 public class Practica6DAP
 {

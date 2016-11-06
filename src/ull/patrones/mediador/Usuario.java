@@ -1,7 +1,6 @@
 package ull.patrones.mediador;
 
 import ull.patrones.form.DChat;
-import ull.patrones.singleton.IMediador;
 
 public class Usuario implements ICliente
 {
