@@ -13,10 +13,6 @@ public class Practica6DAP
 		Usuario ariel = new Usuario("Ariel",t_med);
 		t_med.registarUsuario(landy);
 		t_med.registarUsuario(ariel);
-		landy.enviarMensaje("hola");
-		ariel.enviarMensaje("hola");
-		t_med.difundirMensajes();
-		
 	}
 
 }

@@ -34,21 +34,30 @@ public class DChat extends JDialog
 		setTitle(m_cliente.getNombre());
 		setSize(400,400);
 		setVisible(true);
+		initArea();
+		panelBajo();
+		this.add(m_mensajes,BorderLayout.CENTER);
+		this.add(m_panelBajo, BorderLayout.SOUTH);
+	}
+	private void initArea()
+	{
 		m_mensajes = new JTextArea();
+		m_mensajes.setText("");
 		m_mensajes.setVisible(true);
 		m_mensajes.setEditable(false);
 		m_mensajes.setBackground(SystemColor.desktop);
 		m_mensajes.setForeground(SystemColor.text);
 		m_mensajes.setFont(new Font("Consolas", Font.PLAIN, 12));
-		this.add(m_mensajes,BorderLayout.CENTER);
-		panelBajo();
 	}
 	private void panelBajo()
 	{
 		m_panelBajo = new JPanel();
 		m_panelBajo.setLayout(new FlowLayout());
+		
 		m_jt_mensaje = new JTextField();
 		m_jt_mensaje.setVisible(true);
+		m_jt_mensaje.setColumns(20);
+		
 		m_btnEnviar = new JButton("Enviar");
 		m_btnEnviar.setVisible(true);
 		m_btnEnviar.addActionListener(new ActionListener()
@@ -61,8 +70,7 @@ public class DChat extends JDialog
 		});
 		m_panelBajo.add(m_jt_mensaje);
 		m_panelBajo.add(m_btnEnviar);
-		this.add(m_panelBajo, BorderLayout.SOUTH);
-		System.err.println("panel llega");
+		
 	}
 	private void btnActionPerformed()
 	{

@@ -7,10 +7,12 @@ public class Usuario implements ICliente
 {
 	private String m_nombre;
 	private IMediador m_mediador;
+	private DChat m_display;
 	public Usuario(String a_nombre, IMediador a_mediador)
 	{
 		m_nombre = a_nombre;
 		m_mediador = a_mediador;
+		m_display = new DChat(this);
 	}
 	@Override
 	public String getNombre()
@@ -29,7 +31,11 @@ public class Usuario implements ICliente
 	}
 	public void display(String a_mensajes)
 	{
-		DChat a = new DChat(this);
-		a.verMensajes(a_mensajes);
+		m_display.verMensajes(a_mensajes);
+	}
+	@Override
+	public String toString()
+	{
+		return m_nombre+"...";
 	}
 }

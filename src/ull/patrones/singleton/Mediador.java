@@ -37,6 +37,7 @@ public class Mediador implements IMediador
 	public void enviarMensaje(String a_mensaje, ICliente a_usuario)
 	{
 		setMensaje("\n"+"["+a_usuario.getNombre()+"]:"+a_mensaje);
+		difundirMensajes();
 	}
 	@Override
 	public void registarUsuario(ICliente a_usuario)
