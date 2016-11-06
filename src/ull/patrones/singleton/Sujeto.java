@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import ull.patrones.clientes.DialogUsuario;
 
-public class Mediador
+public class Sujeto
 {	
-	private static Mediador m_mediador = new Mediador();
+	private static Sujeto m_mediador = new Sujeto();
 	private String m_sala;
 	private static LinkedList<DialogUsuario> m_listaclientes;
 	private static LinkedList<HashMap<String, String>> m_listaMensaje;
-	private Mediador()
+	private Sujeto()
 	{
 		m_sala = "--Bienvenido al chat--";
 		m_listaclientes = new LinkedList<>();
@@ -20,7 +20,7 @@ public class Mediador
 	{
 		m_listaclientes.add(a_user);
 	}
-	public static Mediador getInstancia()
+	public static Sujeto getInstancia()
 	{
 		return m_mediador;
 	}

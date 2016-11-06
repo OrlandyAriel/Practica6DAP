@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ull.patrones.singleton.Mediador;
+import ull.patrones.singleton.Sujeto;
 
 import javax.swing.JTextField;
 import java.awt.TextArea;
@@ -36,8 +36,8 @@ public class DialogUsuario extends JDialog
 		DialogUsuario dods = new DialogUsuario(new Usuario("Pepita"));
 		dods.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		dods.setVisible(true);
-		Mediador.suscribir(dods);
-		Mediador.suscribir(dialog);
+		Sujeto.suscribir(dods);
+		Sujeto.suscribir(dialog);
 	}
 
 	private TextArea txtMensajes;
@@ -81,7 +81,7 @@ public class DialogUsuario extends JDialog
 							public void actionPerformed(ActionEvent arg0)
 							{
 								m_usuario.enviarMensaje(txt_mensaje.getText(), a_usuario);
-								Mediador a = Mediador.getInstancia();
+								Sujeto a = Sujeto.getInstancia();
 								setearPantalla(a.sala());
 								txt_mensaje.setText("");
 							}

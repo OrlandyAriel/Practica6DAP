@@ -1,15 +1,15 @@
 package ull.patrones.clientes;
 
-import ull.patrones.singleton.Mediador;
+import ull.patrones.singleton.Sujeto;
 
 public class Usuario
 {
 	private String m_nombre;
-	private Mediador m_medi;
+	private Sujeto m_medi;
 	public Usuario(String a_nombre)
 	{
 		m_nombre = a_nombre;
-		m_medi = Mediador.getInstancia();
+		m_medi = Sujeto.getInstancia();
 	}
 	public void enviarMensaje(String a_mensaje, Usuario a_usuario)
 	{
