@@ -12,6 +12,11 @@ import ull.patrones.mediador.IMediador;
 import ull.patrones.mediador.Mediador;
 import ull.patrones.mediador.Usuario;
 
+/**
+ * Ventana principal de la aplicación
+ * @author Orlandy Ariel Sánchez A.
+ *
+ */
 public class VentanaPrincipal extends JFrame
 {
 	private JPanel m_Panel;
@@ -73,7 +78,7 @@ public class VentanaPrincipal extends JFrame
 	 */
 	private void anadirUsuario()
 	{
-		if(!m_tfNombre.getText().isEmpty())
+		if(!m_tfNombre.getText().isEmpty())// evita que si no se introduce un nombre no se cree el usuario dado que "" se considera string
 		{
 			new Usuario(m_tfNombre.getText(), mediador);
 			m_tfNombre.setText("");
