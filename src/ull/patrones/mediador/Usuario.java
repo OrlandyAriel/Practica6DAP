@@ -22,7 +22,7 @@ public class Usuario implements ICliente
 		m_nombre = a_nombre;
 		m_mediador = a_mediador;
 		m_mediador.registarUsuario(this);
-		m_display = new DChat(this);
+		m_display = new DChat(this, a_mediador.getMensajes());
 		
 	}
 	@Override

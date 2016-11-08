@@ -31,11 +31,13 @@ public class DChat extends JDialog
 	 *Construstor que recibe un cliente/usuario para crear una ventana para este.
 	 * @param a_cliente, usuario para el cual se crea la ventana
 	 */
-	public DChat(ICliente a_cliente)
+	public DChat(ICliente a_cliente,String a_mensajesInicial)
 	{
 		m_cliente = a_cliente;
 		initComponent();
+		actualizaDisplay(a_mensajesInicial);
 	}
+	
 	/**
 	 * Método para iniizalizar los distintos componentes de la ventana
 	 */

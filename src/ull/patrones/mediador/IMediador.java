@@ -21,4 +21,5 @@ public interface IMediador
 	 * @param a_usuario, usuario que se desea registrar
 	 */
 	public void registarUsuario(ICliente a_usuario);
+	public String getMensajes();
 }
